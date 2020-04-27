@@ -59,8 +59,8 @@ describe('GET/jokes', () => {
       request(server)
         .post('/api/auth/login')
         .send({
-          username: bward2,
-          password: well2,
+          username: 'bward3',
+          password: 'well3'
         })
         .end((err, response) => {
           token = response.body.token; // save the token!
@@ -73,7 +73,8 @@ describe('GET/jokes', () => {
         .get('/api/jokes')
         .set("Authorization", token)
         .then(res => {
-            expect(Array.isArray(res)).toBe(true)
+            expect(Array.isArray(res.body)).toBe(true)
+            
         })
     })
 })
